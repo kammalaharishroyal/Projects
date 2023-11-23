@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD/EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="l12_hibernate_mappings.one2many.Cart"
+		table="cart_o2m">
+		<id name="id" type="int" column="id">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="total" column="total" type="int"></property>
+		<property name="name" column="name" type="string"></property>
+		<set name="items" table="items_o2m" fetch="select">
+			<key>
+				<column name="cart_id" not-null="true"></column>
+			</key>
+			<one-to-many class="l12_hibernate_mappings.one2many.Items"/>		
+		</set>
+
+
+	</class>
+</hibernate-mapping>
